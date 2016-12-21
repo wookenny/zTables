@@ -2,35 +2,46 @@
 from os import system
 from subprocess import Popen, PIPE
 
+runOnHardware = False
 
 def runTetris():
-    #system("python -m arbalet.apps.tetris -w -ng")
-    system("python -m arbalet.apps.tetris")
+    if(runOnHardware):
+        system("python -m arbalet.apps.tetris -w -ng")
+    else:
+        system("python -m arbalet.apps.tetris")
 
 
 def runSnake():
-        #system("python -m arbalet.apps.snake -w -ng")
-        system("python -m arbalet.apps.snake")
+        if(runOnHardware):
+            system("python -m arbalet.apps.snake -w -ng")
+        else:
+            system("python -m arbalet.apps.snake")
 
 def runGifs():
-    #process = Popen(["python", "./images.py", "-w", "-ng"], stdout=PIPE)
-    process = Popen(["python", "./images.py"], stdout=PIPE)
+    if(runOnHardware):
+        process = Popen(["python", "./images.py", "-w", "-ng"], stdout=PIPE)
+    else:
+        process = Popen(["python", "./images.py"], stdout=PIPE)
     (output, err) = process.communicate()
     exit_code = process.wait()
     return output
 
 
 def runColors():
-        #process = Popen(["python", "./colors.py", "-w", "-ng"], stdout=PIPE)
-        process = Popen(["python", "./colors.py"], stdout=PIPE)
+        if(runOnHardware):
+            process = Popen(["python", "./colors.py", "-w", "-ng"], stdout=PIPE)
+        else:
+            process = Popen(["python", "./colors.py"], stdout=PIPE)
 
         (output, err) = process.communicate()
         exit_code = process.wait()
         return output
 
 def runMenu():
-        #process = Popen(["python", "./menu.py", "-w", "-ng"], stdout=PIPE)
-        process = Popen(["python", "./menu.py"], stdout=PIPE)
+        if(runOnHardware):
+            process = Popen(["python", "./menu.py", "-w", "-ng"], stdout=PIPE)
+        else:
+            process = Popen(["python", "./menu.py"], stdout=PIPE)
 
         (output, err) = process.communicate()
         exit_code = process.wait()
