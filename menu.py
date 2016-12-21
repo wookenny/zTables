@@ -20,6 +20,7 @@ class MenuApp(Application):
     selected_top = True
     quit = False
     startingTime = datetime.now()
+    showGifs = False
 
     def __init__(self):
         parser = argparse.ArgumentParser(description='This trivial application shows a worm')
@@ -61,8 +62,8 @@ class MenuApp(Application):
                 elif(event.dict['button']==1): #B
                     self.runGame()
                 elif(event.dict['button']==2): #X
-                    #run gif animation
-                    pass
+                    self.showGifs = True
+                    self.runGame()
                 elif(event.dict['button']==3): #Y
                     self.selected_top = True
                 return
@@ -80,7 +81,10 @@ class MenuApp(Application):
                     self.runGame()
 
     def runGame(self):
-        print( "Tetris" if self.selected_top else "Snake")
+        if(self.showGifs):
+            print "Gifs"
+        else:
+            print( "Tetris" if self.selected_top else "Snake")
         self.quit = True
 
 
@@ -105,7 +109,7 @@ class MenuApp(Application):
             time.sleep(0.2)
             self.process_events()
             self.draw_board()
-            if(datetime.now()-self.startingTime> timedelta(seconds=15)):
+            if(datetime.now()-self.startingTime> timedelta(seconds=10)):
                 self.quit = True
 
 MenuApp().start()
