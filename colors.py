@@ -114,7 +114,7 @@ class ColorDemo(Application):
     def process_events(self):
         for event in self.arbalet.events.get():
             # Keyboard control
-            if event.type in [pygame.KEYDOWN, pygame.KEYUP]:
+            if event.type in [pygame.KEYDOWN, pygame.KEYUP, pygame.JOYBUTTONDOWN, pygame.JOYHATMOTION]:
                 self.quit = True
     def run(self):
         # Construct all pixel generators
