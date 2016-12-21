@@ -148,28 +148,6 @@ animations = {'swipe': { 'rate': 20, 'dur_min': 10, 'dur_max': 15, 'generator_id
               'flashes': { 'rate': 20, 'dur_min': 10, 'dur_max': 60, 'generator_id': 0,
                            'colors':[(219, 105, 11), 'white'] }
               }
-'''
- animations = {'swipe': { 'rate': 20, 'dur_min': 10, 'dur_max': 15, 'generator_id': 1,
-                           'colors': ['yellowgreen', 'darkorange', 'darkred', 'deeppink',
-                                      'purple', 'darkblue', 'turquoise', 'darkgreen'] },
-
-                'african': { 'rate': 20, 'dur_min': 10, 'dur_max':15, 'generator_id': 2,
-                             'colors':[(39, 26, 19), (49, 32, 23), (100, 66, 48), (172, 69, 11), (232, 139, 36)] },
-
-                'flashes': { 'rate': 20, 'dur_min': 10, 'dur_max': 60, 'generator_id': 0,
-                             'colors':['darkblue', 'white'] },
-
-                'gender': { 'rate': 20, 'dur_min': 5, 'dur_max': 15, 'generator_id': 2,
-                             'colors':['darkblue', 'deeppink'] },
-
-                'teddy':  { 'rate': 20, 'dur_min': 5, 'dur_max': 20, 'generator_id': 2,
-                             'colors':[(0, 30, 30), (20, 10, 0)] },
-
-                'warm':  { 'rate': 50, 'dur_min': 10, 'dur_max': 30, 'generator_id': 2,
-                             'colors':[[20, 11, 2], [13, 0, 3], [10, 1, 4]] },
-
-                }
-'''
 
 parser = argparse.ArgumentParser(description='Color demonstrator with nice effects and animations for demos (and pleasure!)'
                                              'To be enriched with newer animations!')

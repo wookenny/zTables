@@ -51,33 +51,37 @@ class MenuApp(Application):
                 self.arbalet.user_model.set_pixel(i,j, "dark gray")
                 """
     def process_events(self):
+        runGame = False
         for event in self.arbalet.events.get():
+            #padcontrol
+            if event.type==pygame.JOYBUTTONDOWN:
+                self.startingTime = datetime.now()
+                if(event.dict['button']==0): #A
+                    self.selected_top = False
+                elif(event.dict['button']==1): #B
+                    self.runGame()
+                elif(event.dict['button']==2): #X
+                    #run gif animation
+                    pass
+                elif(event.dict['button']==3): #Y
+                    self.selected_top = True
+                return
+
             # Keyboard control
             if event.type in [pygame.KEYDOWN, pygame.KEYUP]:
                 if event.key==pygame.K_UP:
                     self.selected_top = True
-                    self.startingTime = datetime.now()
                     self.draw_board()
 
                 elif event.key==pygame.K_DOWN:
                     self.selected_top = False
-                    self.startingTime = datetime.now()
                     self.draw_board()
                 elif event.key==pygame.K_RIGHT:
-                    print( "Tetris" if self.selected_top else "Snake")
-                    if(self.selected_top):
-                        self.runTetris()
-                    else:
-                        self.runSnake()
+                    self.runGame()
 
-    def runSnake(self):
+    def runGame(self):
+        print( "Tetris" if self.selected_top else "Snake")
         self.quit = True
-        return "Snake"
-
-
-    def runTetris(self):
-        self.quit = True
-        return "Tetris"
 
 
     def select_top(self):
@@ -98,10 +102,10 @@ class MenuApp(Application):
 
     def run(self):
         while not self.quit:
-            time.sleep(0.07)
+            time.sleep(0.2)
             self.process_events()
             self.draw_board()
-            if(datetime.now()-self.startingTime> timedelta(seconds=5)):
+            if(datetime.now()-self.startingTime> timedelta(seconds=15)):
                 self.quit = True
 
 MenuApp().start()
